@@ -8,5 +8,12 @@ object Route {
     object A
 
     @Serializable
-    object B
+    data class B(
+        val myText: String,
+        val myNumber: Int
+    )
+
+    @Serializable
+    object C
+
 }

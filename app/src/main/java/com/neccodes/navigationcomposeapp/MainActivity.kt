@@ -7,9 +7,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
 import com.neccodes.navigationcomposeapp.routes.Route
 import com.neccodes.navigationcomposeapp.screen.ScreenA
 import com.neccodes.navigationcomposeapp.screen.ScreenB
+import com.neccodes.navigationcomposeapp.screen.ScreenC
 import com.neccodes.navigationcomposeapp.ui.theme.NavigationComposeAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,11 +28,30 @@ class MainActivity : ComponentActivity() {
                     startDestination = Route.A
                 ) {
                     composable<Route.A> {
-                        ScreenA(navController)
+                        ScreenA(
+                            onNavigateToScreenB = {text, number ->
+                                navController
+                                    .navigate(Route.B(
+                                        myText = text,
+                                        myNumber = number
+                                    ))
+                            }
+                        )
                     }
 
                     composable<Route.B> {
-                        ScreenB()
+                        val args = it.toRoute<Route.B>()
+                        ScreenB(
+                            onNavigateToScreenC = {
+                                navController.navigate(Route.C)
+                            },
+                            text = args.myText,
+                            number = args.myNumber
+                        )
+                    }
+
+                    composable<Route.C> {
+                        ScreenC()
                     }
                 }
             }
