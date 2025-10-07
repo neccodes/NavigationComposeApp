@@ -11,9 +11,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.neccodes.navigationcomposeapp.routes.Route
 
 @Composable
-fun ScreenA() {
+fun ScreenA(navController: NavController) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -24,7 +26,9 @@ fun ScreenA() {
             )
             Spacer(modifier = Modifier.height(20.dp))
             Button(
-                onClick = {}
+                onClick = {
+                    navController.navigate(Route.B)
+                }
             ) {
                 Text(
                     text = "Navigate to Screen B"

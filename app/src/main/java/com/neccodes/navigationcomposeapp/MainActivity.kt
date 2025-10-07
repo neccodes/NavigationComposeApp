@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
                     startDestination = Route.A
                 ) {
                     composable<Route.A> {
-                        ScreenA()
+                        ScreenA(navController)
                     }
 
                     composable<Route.B> {

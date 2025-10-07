@@ -16,7 +16,7 @@ fun ScreenB() {
     ) {
         Column {
             Text(
-                text = "Screen A"
+                text = "Screen B"
             )
         }
     }
