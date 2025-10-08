@@ -16,7 +16,8 @@ import androidx.compose.ui.unit.dp
 fun ScreenB(
     onNavigateToScreenC: (String, Int) -> Unit,
     text: String,
-    number: Int
+    number: Int,
+    onNavigateBack: () -> Unit
 ) {
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -36,6 +37,14 @@ fun ScreenB(
             }
             Spacer(modifier = Modifier.height(20.dp))
             Text(text = "$text | $number")
+            Spacer(modifier = Modifier.height(20.dp))
+            Button(
+                onClick = {
+                    onNavigateBack()
+                }
+            ) {
+                Text(text = "Return to Screen A")
+            }
         }
     }
 }

@@ -42,15 +42,20 @@ class MainActivity : ComponentActivity() {
                     composable<Route.B> {
                         val args = it.toRoute<Route.B>()
                         ScreenB(
-                            onNavigateToScreenC = {yText, yNumber ->
+                            onNavigateToScreenC = { yText, yNumber ->
                                 navController
-                                    .navigate(Route.C(
-                                        yourText = yText,
-                                        yourNumber = yNumber
-                                ))
+                                    .navigate(
+                                        Route.C(
+                                            yourText = yText,
+                                            yourNumber = yNumber
+                                        )
+                                    )
                             },
                             text = args.myText,
-                            number = args.myNumber
+                            number = args.myNumber,
+                            onNavigateBack = {
+                                navController.popBackStack()
+                            }
                         )
                     }
 
@@ -58,7 +63,10 @@ class MainActivity : ComponentActivity() {
                         val args = it.toRoute<Route.C>()
                         ScreenC(
                             yText = args.yourText,
-                            yNumber = args.yourNumber
+                            yNumber = args.yourNumber,
+                            onNavigateBack = {
+                                navController.popBackStack()
+                            }
                         )
                     }
                 }
