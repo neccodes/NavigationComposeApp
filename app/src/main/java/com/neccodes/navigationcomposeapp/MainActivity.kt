@@ -42,8 +42,12 @@ class MainActivity : ComponentActivity() {
                     composable<Route.B> {
                         val args = it.toRoute<Route.B>()
                         ScreenB(
-                            onNavigateToScreenC = {
-                                navController.navigate(Route.C)
+                            onNavigateToScreenC = {yText, yNumber ->
+                                navController
+                                    .navigate(Route.C(
+                                        yourText = yText,
+                                        yourNumber = yNumber
+                                ))
                             },
                             text = args.myText,
                             number = args.myNumber
@@ -51,7 +55,11 @@ class MainActivity : ComponentActivity() {
                     }
 
                     composable<Route.C> {
-                        ScreenC()
+                        val args = it.toRoute<Route.C>()
+                        ScreenC(
+                            yText = args.yourText,
+                            yNumber = args.yourNumber
+                        )
                     }
                 }
             }

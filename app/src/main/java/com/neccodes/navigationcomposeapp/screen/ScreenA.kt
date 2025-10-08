@@ -27,7 +27,7 @@ fun ScreenA(
             Spacer(modifier = Modifier.height(20.dp))
             Button(
                 onClick = {
-                    onNavigateToScreenB("Hello from Screen A", 123)
+                    onNavigateToScreenB("Hello from Screen A", 8102025)
                 }
             ) {
                 Text(

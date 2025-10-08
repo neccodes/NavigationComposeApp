@@ -14,6 +14,9 @@ object Route {
     )
 
     @Serializable
-    object C
+    data class C(
+        val yourText: String,
+        val yourNumber: Int
+    )
 
 }

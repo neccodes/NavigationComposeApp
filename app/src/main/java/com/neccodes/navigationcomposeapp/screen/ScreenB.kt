@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ScreenB(
-    onNavigateToScreenC: () -> Unit,
+    onNavigateToScreenC: (String, Int) -> Unit,
     text: String,
     number: Int
 ) {
@@ -29,7 +29,7 @@ fun ScreenB(
             Spacer(modifier = Modifier.height(20.dp))
             Button(
                 onClick = {
-                    onNavigateToScreenC()
+                    onNavigateToScreenC("Hello from ScreenB", 9102025)
                 }
             ) {
                 Text(text = "Navigate to Screen C")
